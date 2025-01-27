@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Configuration\" />
-    <Folder Include="Data\Seeder\" />
+    <ProjectReference Include="..\Keepass.Domain\Keepass.Domain.csproj" />
   </ItemGroup>
 
 </Project>

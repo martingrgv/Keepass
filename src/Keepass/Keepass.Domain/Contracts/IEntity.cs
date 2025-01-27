@@ -1,4 +1,4 @@
-﻿namespace Domain.Contracts
+﻿namespace Keepass.Domain.Contracts
 {
     public interface IEntity
     {

@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Keepass
+namespace Keepass.Wpf
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class LoginWindow : Window
     {
-        public Login()
+        public LoginWindow()
         {
             InitializeComponent();
         }

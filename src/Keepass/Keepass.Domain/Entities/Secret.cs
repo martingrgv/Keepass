@@ -1,6 +1,6 @@
-﻿using Domain.Contracts;
+﻿using Keepass.Domain.Contracts;
 
-namespace Domain.Entities
+namespace Keepass.Domain.Entities
 {
     public class Secret : IEntity
     {
@@ -19,7 +19,7 @@ namespace Domain.Entities
         public Guid Id { get; private set; }
         public string Username { get; private set; } = default!;
         public string Password { get; private set; } = default!;
-        public string? Notes { get; private set; } = default!
+        public string? Notes { get; private set; } = default!;
         public string? Url { get; private set; }
 
         public void SetUsername(string username)
