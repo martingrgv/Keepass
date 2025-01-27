@@ -1,4 +1,6 @@
 ﻿
+using Keepass.Application.Secrets.Commands.CreateSecret;
+
 namespace Keepass.Wpf.Views
 {
     /// <summary>
@@ -13,6 +15,14 @@ namespace Keepass.Wpf.Views
             _sender = sender;
 
             InitializeComponent();
+        }
+
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            var command = new CreateSecretCommand(textBoxUsername.Text, textBoxPassword.Text, textBoxNote.Text, textBoxUrl.Text);
+            var result = await _sender.Send(command);
+
+            Close();
         }
     }
 }

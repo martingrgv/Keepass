@@ -19,7 +19,9 @@ namespace Keepass.Wpf.Extensions
         public static IServiceCollection AddPresentation(this IServiceCollection services)
         {
             services.AddSingleton<MainWindow>();
+
             services.AddFormFactory<LoginWindow>();
+            services.AddFormFactory<CreateSecretWindow>();
 
             return services;
         }

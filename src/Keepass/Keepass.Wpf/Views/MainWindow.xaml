@@ -7,10 +7,17 @@
         mc:Ignorable="d"
         Title="Keepass" Height="450" Width="800">
     <Grid>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,355">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Padding" Value="15,0"/>
+                    <Setter Property="Margin" Value="5,20"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="btnCreateSecrets" Content="N" Click="btnCreateSecrets_Click" />
+        </StackPanel>
         <StackPanel>
-            <Button x:Name="btnReloadSecrets" Content="Reload" Click="btnReloadSecrets_Click" Margin="300 10"/>
-            <Button x:Name="btnCreateSecrets" Content="Create Secret" Click="btnCreateSecrets_Click" Margin="300 10"/>
-            <DataGrid x:Name="dataGridSecrets" AutoGenerateColumns="True" MaxWidth="800" Height="350"  MaxHeight="350" />
+            <DataGrid x:Name="dataGridSecrets" AutoGenerateColumns="True" Margin="0,75" />
         </StackPanel>
     </Grid>
 </Window>

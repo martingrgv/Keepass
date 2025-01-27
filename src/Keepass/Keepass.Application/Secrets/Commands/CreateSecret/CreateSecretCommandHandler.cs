@@ -10,7 +10,7 @@
             var secret = new Secret(
                 Guid.NewGuid(),
                 command.Username,
-                command.Password,
+                encryptedPassword,
                 command.Note,
                 command.Url);
 
