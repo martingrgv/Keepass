@@ -1,16 +1,26 @@
 ﻿using Keepass.Application.Secrets.Queries.GetSecrets;
-using MediatR;
+using Keepass.Wpf.Contracts;
+
 namespace Keepass.Wpf.Views
 {
     public partial class MainWindow : Window
     {
-        private ISender _sender;
+        private readonly ISender _sender;
+        private readonly IFormAbstractFactory<LoginWindow> _factory;
 
-        public MainWindow(ISender sender)
+        public MainWindow(ISender sender, IFormAbstractFactory<LoginWindow> factory)
         {
             _sender = sender;
+            _factory = factory;
 
+            Login();
             InitializeComponent();
+        }
+
+        private void Login()
+        {
+            var loginWindow = _factory.Create();
+            var value = loginWindow.ShowDialog();
         }
 
         private async void btnReloadSecrets_Click(object sender, RoutedEventArgs e)

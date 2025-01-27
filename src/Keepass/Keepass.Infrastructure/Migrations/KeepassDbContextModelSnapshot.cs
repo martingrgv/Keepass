@@ -39,7 +39,7 @@ namespace Keepass.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Secrets");
+                    b.ToTable("Secrets", (string)null);
                 });
 #pragma warning restore 612, 618
         }

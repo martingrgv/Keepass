@@ -1,14 +1,13 @@
-﻿using Keepass.Wpf.Views;
+﻿using Keepass.Wpf.Extensions;
+using Keepass.Wpf.Views;
+using Microsoft.Extensions.Hosting;
 
 namespace Keepass.Wpf
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : System.Windows.Application
     {
-        private IServiceProvider _serviceProvider = null!;
-        private IConfiguration _configuration = null!;
+        private readonly IConfiguration _configuration; 
+        public static IHost? AppHost { get; private set; }
 
         public App()
         {
@@ -17,17 +16,31 @@ namespace Keepass.Wpf
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) 
                 .Build();
 
-            _serviceProvider = new ServiceCollection()
-                .AddInfrastructure(_configuration)
-                .AddApplication()
-                .AddSingleton<MainWindow>()
-                .BuildServiceProvider();
+            AppHost = Host.CreateDefaultBuilder()
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services
+                    .AddInfrastructure(_configuration)
+                    .AddApplication()
+                    .AddPresentation();
+                })
+                .Build();
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            await AppHost!.StartAsync();
+
+            var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
+
+            base.OnStartup(e);
+        }
+
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            await AppHost!.StopAsync();
+            base.OnExit(e);
         }
     }
 }
