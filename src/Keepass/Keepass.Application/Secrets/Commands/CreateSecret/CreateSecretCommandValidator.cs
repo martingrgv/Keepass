@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Keepass.Application.Secrets.Commands.CreateSecret
+﻿namespace Keepass.Application.Secrets.Commands.CreateSecret
 {
     public class CreateSecretCommandValidator : AbstractValidator<CreateSecretCommand>
     {
