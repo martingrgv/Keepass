@@ -1,7 +1,4 @@
-﻿using Keepass.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace Keepass.Infrastructure.Data.Persistence
+﻿namespace Keepass.Infrastructure.Data.Persistence
 {
     public class KeepassDbContext : DbContext
     {
@@ -10,6 +7,13 @@ namespace Keepass.Infrastructure.Data.Persistence
         {
         }
 
-        public DbSet<Secret> Secrets { get; set; }
+        public DbSet<Secret> Secrets { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(KeepassDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

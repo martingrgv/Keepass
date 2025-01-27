@@ -1,28 +1,28 @@
-﻿using Keepass.Infrastructure.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
-
+﻿
 namespace Keepass.Wpf
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
-        private IServiceProvider _serviceProvider;
+        private IServiceProvider _serviceProvider = null!;
+        private IConfiguration _configuration = null!;
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            string connectionString = "Server=localhost;Database=KeepassDb;Integrated Security=True;TrustServerCertificate=True";
+            _configuration = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory) 
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) 
+                .Build();
 
             _serviceProvider = new ServiceCollection()
-                .RegisterDatabase(connectionString)
-                .RegisterServices()
+                .AddInfrastructure(_configuration)
+                .AddApplication()
                 .BuildServiceProvider();
 
             var loginWindow = new LoginWindow();
             loginWindow.Show();
         }
     }
-
 }

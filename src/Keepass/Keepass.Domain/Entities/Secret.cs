@@ -9,17 +9,19 @@ namespace Keepass.Domain.Entities
             // Empty constructor requirement for EFCore   
         }
 
-        public Secret(Guid id, string username, string password)
+        public Secret(Guid id, string username, string password, string? note, string? url)
         {
             Id = id;
             Username = username;
             Password = password;
+            Note = note;
+            Url = url;
         }
 
         public Guid Id { get; private set; }
         public string Username { get; private set; } = default!;
         public string Password { get; private set; } = default!;
-        public string? Notes { get; private set; } = default!;
+        public string? Note { get; private set; } = default!;
         public string? Url { get; private set; }
 
         public void SetUsername(string username)
@@ -32,9 +34,9 @@ namespace Keepass.Domain.Entities
             Password = password;
         }
 
-        public void SetDescription(string description)
+        public void SetNote(string note)
         {
-            Notes = description;
+            Note = note;
         }
 
         public void SetUrl(string url)

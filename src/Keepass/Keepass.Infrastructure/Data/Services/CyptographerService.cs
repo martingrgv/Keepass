@@ -1,9 +1,10 @@
-﻿using System.Security.Cryptography;
+﻿using Keepass.Application.Contracts;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Keepass.Infrastructure.Data.Services
 {
-    public class CyptographerService
+    public class CyptographerService : ICryptography
     {
         private readonly byte[] _key;
         private readonly byte[] _iv;

@@ -1,27 +1,20 @@
-﻿using Keepass.Infrastructure.Data.Persistence;
-using Keepass.Infrastructure.Data.Persistence.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Keepass.Application.Contracts;
+using Keepass.Infrastructure.Data.Services;
 
 namespace Keepass.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection RegisterServices(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<ISecretRepository, SecretRepository>();
-
-            return services;
-        }
-
-        public static IServiceCollection RegisterDatabase(this IServiceCollection services, string connectionString)
-        {
-            if (string.IsNullOrEmpty(connectionString))
+            string connectionString = configuration.GetConnectionString("KeepassDb") ?? throw new ArgumentNullException("No connection string provided!");
+            services.AddDbContext<KeepassDbContext>(options =>
             {
-                throw new ArgumentNullException("No connection string provided!");
-            }
+                options.UseSqlite(connectionString);
+            });
 
-            services.AddDbContext<KeepassDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<ISecretRepository, SecretRepository>();
+            services.AddSingleton<ICryptography, CyptographerService>();
 
             return services;
         }
