@@ -1,6 +1,4 @@
-﻿using Keepass.Application.Contracts;
-
-namespace Keepass.Application.Secrets.Commands.CreateSecret
+﻿namespace Keepass.Application.Secrets.Commands.CreateSecret
 {
     public class CreateSecretCommandHandler(ISecretRepository secretRepository, ICryptography cryptography) 
         : ICommandHandler<CreateSecretCommand, CreateSecretResult>

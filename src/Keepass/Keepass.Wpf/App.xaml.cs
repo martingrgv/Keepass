@@ -1,4 +1,5 @@
-﻿
+﻿using Keepass.Wpf.Views;
+
 namespace Keepass.Wpf
 {
     /// <summary>
@@ -9,9 +10,9 @@ namespace Keepass.Wpf
         private IServiceProvider _serviceProvider = null!;
         private IConfiguration _configuration = null!;
 
-        protected override void OnStartup(StartupEventArgs e)
+        public App()
         {
-            _configuration = new ConfigurationBuilder()
+             _configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory) 
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) 
                 .Build();
@@ -19,10 +20,14 @@ namespace Keepass.Wpf
             _serviceProvider = new ServiceCollection()
                 .AddInfrastructure(_configuration)
                 .AddApplication()
+                .AddSingleton<MainWindow>()
                 .BuildServiceProvider();
+        }
 
-            var loginWindow = new LoginWindow();
-            loginWindow.Show();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            mainWindow.Show();
         }
     }
 }

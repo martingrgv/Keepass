@@ -1,7 +1,4 @@
-﻿using Keepass.Application.Contracts;
-using Keepass.Infrastructure.Data.Services;
-
-namespace Keepass.Infrastructure.Extensions
+﻿namespace Keepass.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtension
     {
@@ -14,7 +11,7 @@ namespace Keepass.Infrastructure.Extensions
             });
 
             services.AddScoped<ISecretRepository, SecretRepository>();
-            services.AddSingleton<ICryptography, CyptographerService>();
+            services.AddSingleton<ICryptography>(provider => new CyptographerService("key"));
 
             return services;
         }
