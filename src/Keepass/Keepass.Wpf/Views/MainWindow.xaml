@@ -8,8 +8,9 @@
         Title="Keepass" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <Button x:Name="btnReloadSecrets" Content="Reload" Click="btnReloadSecrets_Click" Margin="10 10"/>
-            <DataGrid x:Name="dataGridSecrets" AutoGenerateColumns="True" />
+            <Button x:Name="btnReloadSecrets" Content="Reload" Click="btnReloadSecrets_Click" Margin="300 10"/>
+            <Button x:Name="btnCreateSecrets" Content="Create Secret" Click="btnCreateSecrets_Click" Margin="300 10"/>
+            <DataGrid x:Name="dataGridSecrets" AutoGenerateColumns="True" MaxWidth="800" Height="350"  MaxHeight="350" />
         </StackPanel>
     </Grid>
 </Window>
