@@ -17,15 +17,25 @@ namespace Keepass.Wpf.Views
             _loginFactory = loginFactory;
             _createFactory = createFactory;
 
-            Login();
+            if (!Login())
+            {
+                Environment.Exit(0);
+            }
+
             InitializeComponent();
-            LoadSecrets();
         }
 
-        private void Login()
+        private bool Login()
         {
             var loginWindow = _loginFactory.Create();
-            var value = loginWindow.ShowDialog();
+            bool isLoginSuccess = (bool)loginWindow.ShowDialog()!;
+
+            if (!isLoginSuccess)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void btnCreateSecrets_Click(object sender, RoutedEventArgs e)
@@ -35,12 +45,7 @@ namespace Keepass.Wpf.Views
             createSecretWindow.Show();
         }
 
-        private void ReloadSecrets(object? sender, EventArgs e)
-        {
-            LoadSecrets();
-        }
-        
-        private async void LoadSecrets()
+        private async void ReloadSecrets(object? sender, EventArgs e)
         {
             var query = new GetSecretListQuery();
             var result = await _sender.Send(query);

@@ -22,6 +22,8 @@ namespace Keepass.Wpf
             if (IsLoginValid())
             {
                 _cryptography.SetKey(_loginModel.Key);
+
+                DialogResult = true;
                 Close();
             }
         }

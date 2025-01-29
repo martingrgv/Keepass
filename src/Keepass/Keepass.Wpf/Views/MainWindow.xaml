@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Keepass.Wpf.Views"
         mc:Ignorable="d"
-        Title="Keepass" Height="450" Width="800">
+        Title="Keepass" Height="450" Width="800"
+        Loaded="ReloadSecrets">
     <Grid>
         <StackPanel Orientation="Horizontal" Height="37" VerticalAlignment="Top">
             <StackPanel.Resources>
