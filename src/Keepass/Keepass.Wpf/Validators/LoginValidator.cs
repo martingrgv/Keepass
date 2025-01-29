@@ -7,7 +7,7 @@ namespace Keepass.Wpf.Validators
         public LoginValidator()
         {
             RuleFor(x => x.Key).NotEmpty().WithMessage("Key is required");
-            RuleFor(x => x.Key).Length(3, 20).WithMessage("Key must be between 3 and 20 characters long");
+            RuleFor(x => x.Key).MinimumLength(3).WithMessage("Key must be at least 3 characters long");
         }
     }
 }
