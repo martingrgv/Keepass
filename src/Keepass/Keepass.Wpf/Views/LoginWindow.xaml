@@ -10,8 +10,10 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label x:Name="labelKey" Content="Key:" Margin="10 0"/>
-                <PasswordBox x:Name="passwordBoxKey" Width="262" FontSize="12"/>
+                <PasswordBox x:Name="passwordBox" PasswordChanged="passwordBox_PasswordChanged" Width="262" FontSize="12"/>
             </StackPanel>
+
+            <TextBlock x:Name="validationMessage" HorizontalAlignment="Center" Foreground="Red" Margin="10"/>
 
             <Button x:Name="btnEnter" Content="Enter Key" Click="btnEnter_Click" Width="100"  Margin="0 40" />
         </StackPanel>

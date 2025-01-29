@@ -1,5 +1,4 @@
-﻿using Keepass.Application.Contracts;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace Keepass.Infrastructure.Data.Services
