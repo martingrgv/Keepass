@@ -14,7 +14,7 @@ namespace Keepass.Wpf
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-            string key = textBlockKey.Text;
+            string key = passwordBoxKey.Password;
             _cryptography.SetKey(key);
 
             Close();

@@ -31,8 +31,12 @@ namespace Keepass.Wpf.Views
         private void btnCreateSecrets_Click(object sender, RoutedEventArgs e)
         {
             var createSecretWindow = _createFactory.Create();
-            createSecretWindow.ShowDialog();
+            createSecretWindow.ReloadSecrets += ReloadSecrets;
+            createSecretWindow.Show();
+        }
 
+        private void ReloadSecrets(object? sender, EventArgs e)
+        {
             LoadSecrets();
         }
         

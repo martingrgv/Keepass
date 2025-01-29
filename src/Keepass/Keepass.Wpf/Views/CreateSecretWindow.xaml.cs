@@ -3,12 +3,11 @@ using Keepass.Application.Secrets.Commands.CreateSecret;
 
 namespace Keepass.Wpf.Views
 {
-    /// <summary>
-    /// Interaction logic for CreateSecretWindow.xaml
-    /// </summary>
     public partial class CreateSecretWindow : Window
     {
         private readonly ISender _sender;
+
+        public event EventHandler ReloadSecrets = null!;
 
         public CreateSecretWindow(ISender sender)
         {
@@ -21,6 +20,8 @@ namespace Keepass.Wpf.Views
         {
             var command = new CreateSecretCommand(textBoxUsername.Text, textBoxPassword.Text, textBoxNote.Text, textBoxUrl.Text);
             var result = await _sender.Send(command);
+
+            ReloadSecrets?.Invoke(this, EventArgs.Empty);
 
             Close();
         }
