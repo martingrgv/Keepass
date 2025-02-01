@@ -1,5 +1,5 @@
 ﻿using Keepass.Wpf.Common;
-using Keepass.Wpf.Contracts;
+using Keepass.Wpf.Common.Contracts;
 using Keepass.Wpf.Views;
 
 namespace Keepass.Wpf.Extensions

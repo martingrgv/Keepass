@@ -1,4 +1,4 @@
-﻿using Keepass.Wpf.Contracts;
+﻿using Keepass.Wpf.Common.Contracts;
 
 namespace Keepass.Wpf.Common
 {

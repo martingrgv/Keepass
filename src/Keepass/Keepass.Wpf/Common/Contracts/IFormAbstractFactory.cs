@@ -1,4 +1,4 @@
-﻿namespace Keepass.Wpf.Contracts
+﻿namespace Keepass.Wpf.Common.Contracts
 {
     public interface IFormAbstractFactory<T>
     {
