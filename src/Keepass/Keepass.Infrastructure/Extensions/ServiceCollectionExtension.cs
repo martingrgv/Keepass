@@ -11,6 +11,7 @@
             });
 
             services.AddScoped<ISecretRepository, SecretRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddSingleton<ICryptography, CyptographerService>();
 
             return services;

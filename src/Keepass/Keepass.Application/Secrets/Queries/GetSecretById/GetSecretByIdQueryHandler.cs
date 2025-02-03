@@ -1,7 +1,4 @@
-﻿
-using Keepass.Application.Contracts;
-
-namespace Keepass.Application.Secrets.Queries.GetSecretById
+﻿namespace Keepass.Application.Secrets.Queries.GetSecretById
 {
     public class GetSecretByIdQueryHandler(ISecretRepository secretRepository)
         : IQueryHandler<GetSecretByIdQuery, GetSecretByIdResult>

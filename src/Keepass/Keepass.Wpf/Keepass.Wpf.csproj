@@ -11,16 +11,12 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
-    <None Remove="Keepass.db" />
     <None Remove="Resources\Images\create.png" />
     <None Remove="Resources\Images\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Keepass.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\favicon.ico" />
@@ -45,6 +41,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +51,12 @@
     <Resource Include="Resources\Images\favicon.ico">
       <CopyToOutputDirectory>s</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Keepass.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

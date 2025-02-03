@@ -8,6 +8,7 @@
         }
 
         public DbSet<Secret> Secrets { get; set; } = default!;
+        public DbSet<User> Users { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
