@@ -19,6 +19,9 @@
             <Button x:Name="btnCreateSecrets" Click="btnCreateSecrets_Click" Background="{x:Null}" BorderThickness="0,0,0,0">
                 <Image Source="/Resources/Images/create.png"/>
             </Button>
+            <Button x:Name="btnExport" Click="btnExport_Click" Background="{x:Null}" BorderThickness="0,0,0,0">
+                <Image Source="/Resources/Images/export.png"/>
+            </Button>
         </StackPanel>
         <StackPanel Height="397" VerticalAlignment="Top" Margin="0,37,0,0">
             <DataGrid x:Name="dataGridSecrets" AutoGenerateColumns="True" ColumnWidth="*" ClipboardCopyMode="ExcludeHeader" SelectionUnit="Cell"/>

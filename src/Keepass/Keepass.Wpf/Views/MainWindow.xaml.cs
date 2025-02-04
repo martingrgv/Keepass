@@ -1,4 +1,7 @@
-﻿using Keepass.Application.Secrets.Queries.GetSecrets;
+﻿using Keepass.Application.Secrets.Queries.ExportSecretList;
+using Keepass.Application.Secrets.Queries.GetSecrets;
+using Microsoft.Win32;
+using System.IO;
 
 namespace Keepass.Wpf.Views
 {
@@ -52,6 +55,32 @@ namespace Keepass.Wpf.Views
             var secretList = result.Adapt<SecretListViewModel>();
 
             dataGridSecrets.ItemsSource = secretList.Secrets;
+        }
+
+        private async void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            string directoryPath = string.Empty;
+
+            var ofd = new OpenFolderDialog()
+            {
+                DefaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            };
+
+
+            if (ofd.ShowDialog() == true)
+            {
+                directoryPath = ofd.FolderName;
+            }
+
+            var result = await _sender.Send(new ExportSecretListQuery());
+
+            byte[] fileBytes = result.FileBytes;
+            string filePath = Path.Combine(directoryPath, "secrets.json");
+
+            using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                fs.Write(fileBytes);
+            }    
         }
     }
 }
