@@ -8,6 +8,8 @@ namespace Keepass.Infrastructure.Data.Services
         private byte[] _key;
         private byte[] _iv;
 
+        public byte[] Key => _key;
+
         public void SetKey(string key)
         {
             using var sha256 = SHA256.Create();

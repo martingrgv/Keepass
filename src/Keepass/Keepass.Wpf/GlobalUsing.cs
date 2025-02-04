@@ -1,9 +1,13 @@
 ﻿global using MediatR;
 global using Mapster;
 global using Keepass.Application.Extensions;
+global using Keepass.Application.Secrets.Queries.ExportSecretList;
+global using Keepass.Application.Secrets.Queries.GetSecrets;
 global using Keepass.Infrastructure.Extensions;
 global using Keepass.Wpf.Common.Contracts;
 global using Keepass.Wpf.Models;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Win32;
 global using System.Windows;
+global using System.IO;

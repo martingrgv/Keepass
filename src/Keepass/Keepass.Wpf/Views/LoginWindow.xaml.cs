@@ -1,9 +1,7 @@
 ﻿using Keepass.Application.Contracts;
 using Keepass.Application.Users.Commands.CreateUser;
 using Keepass.Application.Users.Queries.GetUsers;
-using Keepass.Domain.Entities;
 using Keepass.Wpf.Validators;
-using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography;
 using System.Text;
 
