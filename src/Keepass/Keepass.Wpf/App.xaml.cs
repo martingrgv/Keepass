@@ -30,6 +30,7 @@ namespace Keepass.Wpf
         protected override async void OnStartup(StartupEventArgs e)
         {
             await AppHost!.StartAsync();
+            AppHost.UseMigration();
 
             var mainWindow = AppHost.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();

@@ -1,6 +1,8 @@
-﻿using Keepass.Wpf.Common;
-using Keepass.Wpf.Common.Contracts;
+﻿using Keepass.Infrastructure.Data.Persistence;
+using Keepass.Wpf.Common;
 using Keepass.Wpf.Views;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace Keepass.Wpf.Extensions
 {
@@ -24,6 +26,15 @@ namespace Keepass.Wpf.Extensions
             services.AddFormFactory<CreateSecretWindow>();
 
             return services;
+        }
+
+        public static IHost UseMigration(this IHost host)
+        {
+            using var scope = host.Services.CreateScope();
+            using var context = scope.ServiceProvider.GetRequiredService<KeepassDbContext>();
+
+            context.Database.MigrateAsync();
+            return host;
         }
     }
 }
