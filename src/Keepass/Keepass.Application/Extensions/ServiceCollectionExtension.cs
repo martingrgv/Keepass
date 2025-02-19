@@ -5,14 +5,14 @@ namespace Keepass.Application.Extensions
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            var assembly = typeof(ServiceCollectionExtension).Assembly;
+            var applicationAssembly = typeof(ServiceCollectionExtension).Assembly;
             services.AddMediatR(configuraiton =>
             {
-                configuraiton.RegisterServicesFromAssembly(assembly);
+                configuraiton.RegisterServicesFromAssembly(applicationAssembly);
                 configuraiton.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
 
-            services.AddValidatorsFromAssembly(assembly);
+            services.AddValidatorsFromAssembly(applicationAssembly);
 
             return services;
         }

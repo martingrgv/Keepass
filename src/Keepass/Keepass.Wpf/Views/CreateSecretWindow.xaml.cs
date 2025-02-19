@@ -1,5 +1,4 @@
-﻿
-using Keepass.Application.Secrets.Commands.CreateSecret;
+﻿using Keepass.Application.Secrets.Commands.CreateSecret;
 
 namespace Keepass.Wpf.Views
 {
@@ -7,22 +6,16 @@ namespace Keepass.Wpf.Views
     {
         private readonly ISender _sender;
 
-        public event EventHandler ReloadSecrets = null!;
-
         public CreateSecretWindow(ISender sender)
         {
             _sender = sender;
-
             InitializeComponent();
         }
 
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             var command = new CreateSecretCommand(textBoxUsername.Text, textBoxPassword.Text, textBoxNote.Text, textBoxUrl.Text);
-            var result = await _sender.Send(command);
-
-            ReloadSecrets?.Invoke(this, EventArgs.Empty);
-
+            await _sender.Send(command);
             Close();
         }
     }

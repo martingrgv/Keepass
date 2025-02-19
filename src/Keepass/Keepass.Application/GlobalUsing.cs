@@ -5,4 +5,5 @@ global using Keepass.Application.Contracts.CQRS;
 global using Keepass.Application.Contracts;
 global using Keepass.Shared.Exceptions;
 global using Keepass.Application.Behaviors;
+global using Keepass.Domain.Events;
 global using Microsoft.Extensions.DependencyInjection;

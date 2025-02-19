@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Keepass.Wpf.Views"
         mc:Ignorable="d"
-        Title="Keepass" Height="450" Width="800"
-        Loaded="ReloadSecrets">
+        Title="Keepass" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Horizontal" Height="37" VerticalAlignment="Top">
             <StackPanel.Resources>
@@ -24,7 +23,7 @@
             </Button>
         </StackPanel>
         <StackPanel Height="397" VerticalAlignment="Top" Margin="0,37,0,0">
-            <DataGrid x:Name="dataGridSecrets" AutoGenerateColumns="True" ColumnWidth="*" ClipboardCopyMode="ExcludeHeader" SelectionUnit="Cell"/>
+            <DataGrid x:Name="dataGridSecrets" ItemsSource="{Binding Secrets}" AutoGenerateColumns="True" ColumnWidth="*" ClipboardCopyMode="ExcludeHeader" SelectionUnit="Cell"/>
         </StackPanel>
     </Grid>
 </Window>
