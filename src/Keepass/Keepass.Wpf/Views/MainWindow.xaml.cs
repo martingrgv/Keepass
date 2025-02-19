@@ -2,6 +2,8 @@
 using Keepass.Application.Secrets.Queries.GetSecrets;
 using Microsoft.Win32;
 using System.IO;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace Keepass.Wpf.Views
 {
@@ -44,28 +46,25 @@ namespace Keepass.Wpf.Views
 
         private async void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            string directoryPath = string.Empty;
-
-            var ofd = new OpenFolderDialog()
+            var ofd = new SaveFileDialog()
             {
+                FileName = "secrets.json",
                 DefaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
             };
 
 
-            if (ofd.ShowDialog() == true)
+            if (ofd.ShowDialog() == false)
             {
-                directoryPath = ofd.FolderName;
+                return;
             }
 
-            var result = await _sender.Send(new ExportSecretListQuery());
+            string filePath = ofd.FileName;
+            var result = await _sender.Send(new ExportSecretListQuery(filePath));
 
-            byte[] fileBytes = result.FileBytes;
-            string filePath = Path.Combine(directoryPath, "secrets.json");
-
-            using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            if (result.IsSuccess)
             {
-                fs.Write(fileBytes);
-            }    
+                statusBarBlockExtracted.Text = "Extracted";
+            }
         }
 
         private async void LoadSecrets()

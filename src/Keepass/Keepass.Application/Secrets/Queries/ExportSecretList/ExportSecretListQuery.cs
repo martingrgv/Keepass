@@ -1,5 +1,5 @@
 ﻿namespace Keepass.Application.Secrets.Queries.ExportSecretList
 {
-    public record ExportSecretListQuery() : IQuery<ExportSecretListResult>;
-    public record ExportSecretListResult(byte[] FileBytes);
+    public record ExportSecretListQuery(string FilePath) : IQuery<ExportSecretListResult>;
+    public record ExportSecretListResult(bool IsSuccess);
 }

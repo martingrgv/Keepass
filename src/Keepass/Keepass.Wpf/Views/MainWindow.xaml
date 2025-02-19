@@ -25,5 +25,17 @@
         <StackPanel Height="397" VerticalAlignment="Top" Margin="0,37,0,0">
             <DataGrid x:Name="dataGridSecrets" ItemsSource="{Binding Secrets}" AutoGenerateColumns="True" IsReadOnly="True" ColumnWidth="*" ClipboardCopyMode="ExcludeHeader" SelectionUnit="Cell"/>
         </StackPanel>
+        <StatusBar x:Name="sbar" VerticalAlignment="Bottom" Background="LightGray">
+            <StatusBarItem>
+                <TextBlock Text="Secrets Count:"></TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding Secrets.Count}"></TextBlock>
+            </StatusBarItem>
+            <Separator Grid.Column="1" />
+            <StatusBarItem>
+                <TextBlock x:Name="statusBarBlockExtracted"></TextBlock>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
