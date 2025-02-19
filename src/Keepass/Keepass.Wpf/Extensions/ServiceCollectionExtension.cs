@@ -1,5 +1,6 @@
 ﻿using Keepass.Infrastructure.Data.Persistence;
 using Keepass.Wpf.Common;
+using Keepass.Wpf.Events;
 using Keepass.Wpf.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
@@ -20,7 +21,14 @@ namespace Keepass.Wpf.Extensions
 
         public static IServiceCollection AddPresentation(this IServiceCollection services)
         {
+            var presentationAssembly = typeof(CreateSecretEventHandler).Assembly;
+            services.AddMediatR(configuraiton =>
+            {
+                configuraiton.RegisterServicesFromAssembly(presentationAssembly);
+            });
+
             services.AddSingleton<MainWindow>();
+            services.AddSingleton<SecretCollectionViewModel>();
 
             services.AddFormFactory<LoginWindow>();
             services.AddFormFactory<CreateSecretWindow>();

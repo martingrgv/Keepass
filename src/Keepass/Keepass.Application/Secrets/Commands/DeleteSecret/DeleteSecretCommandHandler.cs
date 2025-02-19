@@ -1,6 +1,6 @@
 ﻿namespace Keepass.Application.Secrets.Commands.DeleteSecret
 {
-    public class DeleteSecretCommandHandler(ISecretRepository secretRepository)
+    public class DeleteSecretCommandHandler(ISecretRepository secretRepository, IMediator mediator)
         : ICommandHandler<DeleteSecretCommand, DeleteSecretResult>
     {
         public async Task<DeleteSecretResult> Handle(DeleteSecretCommand command, CancellationToken cancellationToken)
@@ -13,6 +13,8 @@
             }
 
             await secretRepository.DeleteAsync(secret);
+
+            await mediator.Publish(new DeleteSecretEvent(secret), cancellationToken);
 
             return new DeleteSecretResult(true);
         }
