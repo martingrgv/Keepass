@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Keepass.Wpf.Views"
         mc:Ignorable="d"
-        Title="Keepass" Height="450" Width="800">
-    <Grid>
+        Title="Keepass" Height="600" Width="1000">
+    <!--<Grid>
         <StackPanel Orientation="Horizontal" Height="37" VerticalAlignment="Top">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Button}">
@@ -18,7 +18,7 @@
             <Button x:Name="btnCreateSecrets" Click="btnCreateSecrets_Click" Background="{x:Null}" BorderThickness="0,0,0,0">
                 <Image Source="/Resources/Images/create.png"/>
             </Button>
-            <Button x:Name="btnImport" Click="btnImport_Click" Background="{x:Null}" BorderThickness="0,0,0,0">
+            <Button x:Name="btnImport" Click="" Background="{x:Null}" BorderThickness="0,0,0,0">
                 <Image Source="/Resources/Images/import.png"/>
             </Button>
             <Button x:Name="btnExport" Click="btnExport_Click" Background="{x:Null}" BorderThickness="0,0,0,0">
@@ -41,4 +41,43 @@
             </StatusBarItem>
         </StatusBar>
     </Grid>
+-->
+<DockPanel>
+        <!-- Vertical Panel -->
+        <StackPanel DockPanel.Dock="Left" Width="200" Background="#145C9E">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+                <!-- <Image Source="pack://application:,,,/Resources/Logo.png" Width="50" Height="50" HorizontalAlignment="Center"/> -->
+                <TextBlock Text="Password Manager" Foreground="#FFFFFF" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <Button Content="Vault" Foreground="#FFFFFF" FontSize="11" Background="#145C9E" BorderThickness="0" Height="30" Padding="10, 0" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch"/>
+            <Button Content="Settings" Foreground="#FFFFFF" FontSize="11" Background="#145C9E" BorderThickness="0" Height="30" Padding="10, 0" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch"/>
+
+        </StackPanel>
+
+        <Grid>
+            <Grid>
+                <StackPanel>
+                    <TextBlock Text="Personal Vault" Foreground="#000000" FontSize="18" Padding="10, 10" HorizontalAlignment="Left"/>
+                </StackPanel>
+                    
+                <StackPanel>
+                    <Button Content="New" Foreground="#FFFFFF" FontSize="12" Background="#145C9E" BorderThickness="0" Height="30" Padding="12, 0" Margin="10, 10" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </Grid>
+
+
+            <!-- Vault List -->
+            <ListView Name="VaultListView" Margin="10,50,10,10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                        <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}" Width="150"/>
+                        <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Password}" Width="150"/>
+                        <GridViewColumn Header="Website" DisplayMemberBinding="{Binding Url}" Width="200"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </DockPanel>
 </Window>

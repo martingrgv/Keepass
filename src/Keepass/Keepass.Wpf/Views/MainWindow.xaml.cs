@@ -58,7 +58,7 @@ namespace Keepass.Wpf.Views
 
             if (result.IsSuccess)
             {
-                statusBarBlockExtracted.Text = "Imported";
+                //statusBarBlockExtracted.Text = "Imported";
             };
         }
 
@@ -81,7 +81,7 @@ namespace Keepass.Wpf.Views
 
             if (result.IsSuccess)
             {
-                statusBarBlockExtracted.Text = "Extracted";
+                //statusBarBlockExtracted.Text = "Extracted";
             }
         }
 
