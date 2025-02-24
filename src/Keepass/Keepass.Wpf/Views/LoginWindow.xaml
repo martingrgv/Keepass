@@ -7,15 +7,14 @@
         mc:Ignorable="d"
         Title="Login" Height="280" Width="400">
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label x:Name="labelKey" Content="Key:" Margin="10 0"/>
-                <PasswordBox x:Name="passwordBox" PasswordChanged="passwordBox_PasswordChanged" Width="262" FontSize="12"/>
-            </StackPanel>
+        <TextBlock Name="validationMessage" FontSize="14" HorizontalAlignment="Center" Foreground="Red" Margin="10"/>
 
-            <TextBlock x:Name="validationMessage" HorizontalAlignment="Center" Foreground="Red" Margin="10"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock FontSize="24" Text="Login to Password Manager" HorizontalAlignment="Center"/>
 
-            <Button x:Name="btnEnter" Content="Enter Key" Click="btnEnter_Click" Width="100"  Margin="0 40" />
+            <PasswordBox Name="passwordBox" PasswordChanged="passwordBox_PasswordChanged" Width="300" Margin="10"/>
+
+            <Button Name="btnEnter" Content="Login" Click="btnEnter_Click" Width="200" Height="40" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Window>
