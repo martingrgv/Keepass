@@ -2,7 +2,7 @@
 {
     public class NotFoundException : Exception
     {
-        public NotFoundException(string element) :  base($"{element} not found!")
+        public NotFoundException(string element) : base($"{element} not found!")
         {
         }
     }

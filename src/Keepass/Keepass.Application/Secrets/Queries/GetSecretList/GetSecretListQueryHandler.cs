@@ -5,8 +5,8 @@
     {
         public async Task<GetSecretListQueryResult> Handle(GetSecretListQuery query, CancellationToken cancellationToken)
         {
-            var secrets = await secretRepository.SecretListReadOnlyAsync();
-            
+            var secrets = await secretRepository.SecretsReadOnlyAsync();
+
             foreach (var secret in secrets)
             {
                 secret.SetPassword(cryptography.Decrypt(secret.Password));

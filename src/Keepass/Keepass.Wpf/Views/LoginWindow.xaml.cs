@@ -63,7 +63,7 @@ namespace Keepass.Wpf
 
         private async Task<bool> IsLoginValid()
         {
-            if(!await ValidateModel())
+            if (!await ValidateModel())
             {
                 return false;
             }

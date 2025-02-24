@@ -3,7 +3,7 @@
     public class KeepassDbContext : DbContext
     {
         public KeepassDbContext(DbContextOptions options)
-            : base (options)
+            : base(options)
         {
         }
 

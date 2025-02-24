@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace Keepass.Application.Secrets.Commands.DeleteSecret
+﻿namespace Keepass.Application.Secrets.Commands.DeleteSecret
 {
     public class DeleteSecretValidator : AbstractValidator<DeleteSecretCommand>
     {

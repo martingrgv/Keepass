@@ -14,6 +14,7 @@
     <None Remove="Resources\Images\create.png" />
     <None Remove="Resources\Images\export.png" />
     <None Remove="Resources\Images\favicon.ico" />
+    <None Remove="Resources\Images\import.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +55,7 @@
     <Resource Include="Resources\Images\favicon.ico">
       <CopyToOutputDirectory>s</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\import.png" />
   </ItemGroup>
 
   <ItemGroup>

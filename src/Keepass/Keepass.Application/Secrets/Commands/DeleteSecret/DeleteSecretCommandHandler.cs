@@ -12,7 +12,8 @@
                 throw new NotFoundException(command.Id.ToString());
             }
 
-            await secretRepository.DeleteAsync(secret);
+            secretRepository.Delete(secret);
+            await secretRepository.SaveChangesAsync();
 
             await mediator.Publish(new DeleteSecretEvent(secret), cancellationToken);
 

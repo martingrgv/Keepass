@@ -3,10 +3,12 @@ namespace Keepass.Application.Contracts
 {
     public interface ISecretRepository
     {
-        public Task<IEnumerable<Secret>> SecretListAsync();
-        public Task<IEnumerable<Secret>> SecretListReadOnlyAsync();
-        public Task AddAsync(Secret entry);
+        public Task<IEnumerable<Secret>> SecretsAsync();
+        public Task<IEnumerable<Secret>> SecretsReadOnlyAsync();
         public Task<Secret?> GetSecretAsync(Guid id);
-        public Task DeleteAsync(Secret secret);
+        public void Add(Secret entry);
+        public void AddRange(List<Secret> secrets);
+        public void Delete(Secret secret);
+        public Task SaveChangesAsync();
     }
 }

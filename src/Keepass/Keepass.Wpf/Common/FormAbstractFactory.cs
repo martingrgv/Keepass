@@ -1,6 +1,4 @@
-﻿using Keepass.Wpf.Common.Contracts;
-
-namespace Keepass.Wpf.Common
+﻿namespace Keepass.Wpf.Common
 {
     public class FormAbstractFactory<T> : IFormAbstractFactory<T>
     {

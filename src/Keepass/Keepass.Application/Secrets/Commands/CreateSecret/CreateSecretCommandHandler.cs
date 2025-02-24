@@ -1,6 +1,6 @@
 ﻿namespace Keepass.Application.Secrets.Commands.CreateSecret
 {
-    public class CreateSecretCommandHandler(ISecretRepository secretRepository, ICryptography cryptography, IMediator mediator) 
+    public class CreateSecretCommandHandler(ISecretRepository secretRepository, ICryptography cryptography, IMediator mediator)
         : ICommandHandler<CreateSecretCommand, CreateSecretResult>
     {
         public async Task<CreateSecretResult> Handle(CreateSecretCommand command, CancellationToken cancellationToken)
@@ -14,7 +14,8 @@
                 command.Note,
                 command.Url);
 
-            await secretRepository.AddAsync(secret);
+            secretRepository.Add(secret);
+            await secretRepository.SaveChangesAsync();
 
             await mediator.Publish(new CreateSecretEvent(secret), cancellationToken);
 

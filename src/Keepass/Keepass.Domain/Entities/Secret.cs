@@ -1,6 +1,4 @@
-﻿using Keepass.Domain.Contracts;
-
-namespace Keepass.Domain.Entities
+﻿namespace Keepass.Domain.Entities
 {
     public class Secret : IEntity
     {

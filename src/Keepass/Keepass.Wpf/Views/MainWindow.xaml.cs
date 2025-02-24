@@ -1,9 +1,7 @@
-﻿using Keepass.Application.Secrets.Queries.ExportSecretList;
+﻿using Keepass.Application.Secrets.Commands.ImportSecrets;
+using Keepass.Application.Secrets.Queries.ExportSecretList;
 using Keepass.Application.Secrets.Queries.GetSecrets;
 using Microsoft.Win32;
-using System.IO;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace Keepass.Wpf.Views
 {
@@ -43,15 +41,12 @@ namespace Keepass.Wpf.Views
             createSecretWindow.Show();
         }
 
-
-        private async void btnExport_Click(object sender, RoutedEventArgs e)
+        private async void btnImport_Click(object sender, RoutedEventArgs e)
         {
-            var ofd = new SaveFileDialog()
+            var ofd = new OpenFileDialog
             {
-                FileName = "secrets.json",
-                DefaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                Filter = "Json files (*.json)|*.json|Text files (*.txt)|*.txt"
             };
-
 
             if (ofd.ShowDialog() == false)
             {
@@ -59,13 +54,37 @@ namespace Keepass.Wpf.Views
             }
 
             string filePath = ofd.FileName;
-            var result = await _sender.Send(new ExportSecretListQuery(filePath));
+            var result = await _sender.Send(new ImportSecretsCommand(filePath));
+
+            if (result.IsSuccess)
+            {
+                statusBarBlockExtracted.Text = "Imported";
+            };
+        }
+
+        private async void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            var sfd = new SaveFileDialog
+            {
+                FileName = "secrets.json",
+                DefaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            };
+
+
+            if (sfd.ShowDialog() == false)
+            {
+                return;
+            }
+
+            string filePath = sfd.FileName;
+            var result = await _sender.Send(new ExportSecretsQuery(filePath));
 
             if (result.IsSuccess)
             {
                 statusBarBlockExtracted.Text = "Extracted";
             }
         }
+
 
         private async void LoadSecrets()
         {

@@ -51,7 +51,7 @@ namespace Keepass.Infrastructure.Data.Services
             }
         }
 
-        public string Decrypt(string cypher) 
+        public string Decrypt(string cypher)
         {
             if (_key is null)
             {
